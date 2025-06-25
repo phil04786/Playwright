@@ -42,7 +42,8 @@ export default defineConfig({
     headless: false,
     screenshot: "on",
     // trace: "on",
-    trace: "retain-on-failure",
+    // trace: "retain-on-failure",
+    trace: "on",
   },
 
   /* Configure projects for major browsers */
