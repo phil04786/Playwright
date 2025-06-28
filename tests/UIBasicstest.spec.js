@@ -1,15 +1,29 @@
 const { test, expect } = require("@playwright/test");
 
 //browser, page are fixers
-test("Browser Context Playwright test", async ({ browser }) => {
+test.only("Browser Context Playwright test", async ({ browser }) => {
   //chrome -plugins /
   //await is required only when performing the actions.
 
   const context = await browser.newContext();
   const page = await context.newPage();
+  //css is stopped from loading
+  // page.route("**/*.css", (route) => route.abort());
+  // images are blocked
+  // page.route("**/*.{jpg,png,jpeg}", (route) => route.abort());
+
   const userName = page.locator("#username");
   const signIn = page.locator("#signInBtn");
   const cartTitles = page.locator(".card-body a");
+
+  //print all request call
+  page.on("request", (request) => console.log("Request: " + request.url()));
+  //print all response call
+  page.on("response", (response) =>
+    console.log(
+      "Response: URL = " + response.url() + ", Status = " + response.status()
+    )
+  );
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   console.log(await page.title());
@@ -98,5 +112,3 @@ test("Child windows handling", async ({ browser }) => {
   // await page.pause();
   console.log(await page.locator("#username").textContent());
 });
-
-

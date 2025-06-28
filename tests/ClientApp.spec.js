@@ -8,6 +8,7 @@ test("Browser Context Playwright test", async ({ page }) => {
   // use when service call are made means all data is called and network after getting all data becomes idle then get all titles
   // but when serives are not there then do race condition as shown in UIBasicstest.spec.js for allTextContexts(). For Service based App
   await page.waitForLoadState("networkidle");
+
   const titles = await page.locator(".card-body b").allTextContents();
   console.log(titles);
 });
@@ -21,6 +22,7 @@ test.only("Client App Login", async ({ page }) => {
   await page.locator("#userPassword").fill("Iamking@000");
   await page.locator("[value='Login']").click();
   await page.waitForLoadState("networkidle");
+
   const titles = await page.locator(".card-body b").allTextContents();
   console.log(titles);
   const count = await products.count();
@@ -32,6 +34,7 @@ test.only("Client App Login", async ({ page }) => {
     }
   }
   await page.locator("[routerlink*='cart']").click();
+  
   await page.locator("div li").first().waitFor();
   const bool = await page.locator("h3:has-text('ZARA COAT 3')").isVisible();
   //assertion
