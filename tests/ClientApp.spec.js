@@ -13,7 +13,7 @@ test("Browser Context Playwright test", async ({ page }) => {
   console.log(titles);
 });
 
-test.only("Client App Login", async ({ page }) => {
+test.skip("Client App Login", async ({ page }) => {
   const email = "anshika@gmail.com";
   const productName = "ZARA COAT 3";
   const products = page.locator(".card-body");
@@ -34,7 +34,7 @@ test.only("Client App Login", async ({ page }) => {
     }
   }
   await page.locator("[routerlink*='cart']").click();
-  
+
   await page.locator("div li").first().waitFor();
   const bool = await page.locator("h3:has-text('ZARA COAT 3')").isVisible();
   //assertion

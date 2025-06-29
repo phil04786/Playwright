@@ -1,13 +1,10 @@
-// const base = require("@playwright/test");
+//using as a fixture
+const base = require("@playwright/test");
 
-// exports.customtest = base.test.extend({
-//   testDataForOrder: async ({}, use) => {
-//     await use({
-//       username: "anshika@gmail.com",
-//       password: "Iamking@000",
-//       productName: "ZARA COAT 3",
-//     });
-//   },
-// });
-/*
-
+exports.customtest = base.test.extend({
+  testDataForOrder: {
+    username: "anshika@gmail.com",
+    password: "Iamking@000",
+    productName: "ZARA COAT 3",
+  },
+});

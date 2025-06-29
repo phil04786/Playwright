@@ -1,7 +1,10 @@
 const { test, expect } = require("@playwright/test");
-const { platform } = require("os");
+// const { platform } = require("os");
 
-test("Popup validations", async ({ page }) => {
+//running test in parallel:-
+
+test.describe.configure({ mode: "parallel" });
+test("@Web Popup validations", async ({ page }) => {
   await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 
   //   await page.goto("https://www.google.com/");
@@ -35,7 +38,7 @@ test("Screenshot & Visual comparison", async ({ page }) => {
 });
 
 //visual testing screenshot -store -> screenshot ->
-test.only("visual", async ({ page }) => {
+test("visual", async ({ page }) => {
   await page.goto("https://www.google.com/");
   expect(await page.screenshot()).toMatchSnapshot("landing.png");
 });

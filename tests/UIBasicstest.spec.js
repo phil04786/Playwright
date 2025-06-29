@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 //browser, page are fixers
-test.only("Browser Context Playwright test", async ({ browser }) => {
+test("@Web Browser Context Playwright test", async ({ browser }) => {
   //chrome -plugins /
   //await is required only when performing the actions.
 
@@ -59,7 +59,7 @@ test("Page Playwright test", async ({ page }) => {
   await expect(page).toHaveTitle("Google");
 });
 
-test("UI Controls", async ({ page }) => {
+test("@Web UI Controls", async ({ page }) => {
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
 
   const userName = page.locator("#username");

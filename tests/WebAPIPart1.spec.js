@@ -1,5 +1,5 @@
 const { test, expect, request } = require("@playwright/test");
-const { APiUtils } = require("./utils/APiUtils");
+const { APiUtils } = require("../utils/APiUtils");
 
 const loginPayload = {
   userEmail: "anshika@gmail.com",
@@ -21,7 +21,7 @@ test.beforeAll(async () => {
 });
 
 //create order is success
-test("Place the Order", async ({ page }) => {
+test("@API Place the Order", async ({ page }) => {
   page.addInitScript((value) => {
     window.localStorage.setItem("token", value);
   }, response.token);

@@ -9,17 +9,17 @@ test.beforeAll(async ({ browser }) => {
   await page.locator("#userEmail").fill("anshika@gmail.com");
   await page.locator("#userPassword").type("Iamking@000");
   await page.locator("[value='Login']").click();
-  
+
   // ✅ Wait until user-specific element appears (confirms login)
   await page
     .locator("button[routerlink*='myorders']")
     .waitFor({ state: "visible" });
-  
+
   //   await page.waitForLoadState("networkidle");
   await context.storageState({ path: "state.json" });
-  
+
   webContext = await browser.newContext({ storageState: "state.json" });
-  
+
   // console.log(webContext);
 });
 
@@ -85,7 +85,7 @@ test("Client App Login", async () => {
   // await page.pause();
 });
 
-test("test case 2", async () => {
+test("@API test case 2", async () => {
   //   const email = "anshika@gmail.com";
   //   const productName = "ZARA COAT 3";
   const page = await webContext.newPage();
